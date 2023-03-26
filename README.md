@@ -19,3 +19,4 @@
     ```bash
     make build && make run
     ```
+3. Перейти на [localhost:8000/urls/](localhost:8000/urls/)
