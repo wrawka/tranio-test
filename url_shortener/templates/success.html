@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block title %}Your New Short URL{% endblock %}
+{% block content %}
+<div class="card w-50 mt-4 position-relative start-50 translate-middle-x">
+  <div class="card-header text-bg-success">
+    New short URL created
+  </div>
+  <div class="card-body">
+    <label for="basic-url" class="card-title" class="form-label">Your new vanity URL</label>
+    <div class="input-group">
+      <input id="fullURL" type="text" class="form-control" placeholder="{{ base_url }}{{ key }}" aria-label="Vanity URL" aria-describedby="button-copy" readonly>
+      <button class="btn btn-outline-secondary" type="button" id="button-copy" onclick="copyURL()">Copy</button>
+    </div>
+  </div>
+</div>
+{% endblock %}
+{% block js %}
+<script>
+function copyURL() {
+  let copyText = document.getElementById("fullURL");
+
+  copyText.select(); 
+  copyText.setSelectionRange(0, 99999); // For mobile devices
+
+  navigator.clipboard.writeText(copyText.placeholder);
+
+  alert("Copied the text: " + copyText.placeholder);
+}
+</script>
+{% endblock %}
