@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}This is Home page.{% endblock %}
+{% block content %}
+{% if form.errors %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+  <button type="button" data-bs-dismiss="alert" class="btn-close" aria-label="Close"></button>
+  {% for field, error in form.errors.items %}
+  {{ error }}
+  {% endfor %}
+</div>
+<div class="card w-50 mt-4 position-relative start-50 translate-middle-x border-danger">
+{% else %}
+<div class="card w-50 mt-4 position-relative start-50 translate-middle-x">
+{% endif %}
+  <label class="form-label card-header" for="formUrl">{{ form.url.label_tag }}</label>
+  <div class="card-body">
+
+    <form class="form-floating" action="#" name="url-form" method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        {{ form.url }}
+      </div>
+      <input class="btn btn-primary" type="submit" value="SHORTEN">
+    </form>
+  </div>
+</div>
+{% endblock %}
